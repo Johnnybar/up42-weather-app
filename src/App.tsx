@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useEffect } from "react";
 import axios from "axios";
+import { executeSlider } from "./features/slider";
 import "./App.scss";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
   // };
 
   useEffect(() => {
+    executeSlider();
     //functioning api call
     // fetchDataAxios().then((data) => {
     //   console.log(data, "here");
@@ -51,6 +53,45 @@ function App() {
           <div className="col-md-4">weather</div>
           <div className="col-md-4">info </div>
         </div>
+      </div>
+      <div className=" scroll" style={{ overflowY: "auto", cursor: "grab" }}>
+        <ul className="" style={{ display: "flex", width: "100%" }}>
+          <li className="col-2">
+            <div>time</div>
+            <div>icon</div>
+            <div>degree</div>
+          </li>
+          <li className="col-2">
+            <div>time</div>
+            <div>icon</div>
+            <div>degree</div>
+          </li>
+          <li className="col-2">
+            <div>time</div>
+            <div>icon</div>
+            <div>degree</div>
+          </li>
+          <li className="col-2">
+            <div>time</div>
+            <div>icon</div>
+            <div>degree</div>
+          </li>
+          <li className="col-2">
+            <div>time</div>
+            <div>icon</div>
+            <div>degree</div>
+          </li>
+          <li className="col-2">
+            <div>time</div>
+            <div>icon</div>
+            <div>degree</div>
+          </li>
+          <li className="col-2">
+            <div>time</div>
+            <div>icon</div>
+            <div>degree</div>
+          </li>
+        </ul>
       </div>
     </div>
   );
