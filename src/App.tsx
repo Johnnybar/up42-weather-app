@@ -3,6 +3,46 @@ import axios from "axios";
 import "./App.scss";
 
 function App() {
+  const fetchDataJson = async () => {
+    try {
+      const data = await fetch(`mock_data_hourly.json`);
+      return data.json();
+    } catch (error) {
+      return error;
+    }
+  };
+  // const fetchDataAxios = async () => {
+  //   const params = new URLSearchParams();
+  //   params.append("q", "M%C3%BCnchen,DE");
+  //   params.append("appid", "b6907d289e10d714a6e88b30761fhowae22");
+  //   try {
+  //     let url = `/data/2.5/forecast/hourly`;
+
+  //     const { data } = await axios.get(url, { params });
+
+  //     return data;
+  //   } catch (error) {
+  //     return error;
+  //   }
+  // };
+
+  useEffect(() => {
+    //functioning api call
+    // fetchDataAxios().then((data) => {
+    //   console.log(data, "here");
+
+    //   return data;
+
+    // });
+    fetchDataJson()
+      .then((data) => {
+        console.log(data, "here");
+
+        return data;
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="up42-app">
       <div className="container">
