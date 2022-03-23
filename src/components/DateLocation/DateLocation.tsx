@@ -9,8 +9,12 @@ const DateLocation = ({ dayLocationInfo }: DateLocationProps) => {
       <div className="weather-app__date-location-city">
         {dayLocationInfo.name}
       </div>
-      <div>{dayLocationInfo.day}</div>
-      <div>{dayLocationInfo.exactDate}</div>
+      <div className="weather-app__date-location-day">
+        {dayLocationInfo.day}
+      </div>
+      <div className="weather-app__date-location-date">
+        {dayLocationInfo.exactDate}
+      </div>
     </div>
   );
 };

@@ -3,5 +3,21 @@
 .weather-app__date-location {
   &-city {
     @include sm-grey-font;
+    word-wrap: break-word;
+  }
+  &-day,
+  &-date {
+    font-family: "Roboto-Bold";
+    color: $weather-app-white;
+    font-size: $lg-font;
+    word-wrap: break-word;
+  }
+
+  @media only screen and (max-device-width: 480px) {
+    &-city,
+    &-day,
+    &-date {
+      word-wrap: break-word;
+    }
   }
 }
