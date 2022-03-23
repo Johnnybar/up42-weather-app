@@ -41,8 +41,11 @@ function App() {
         const singleDayHours = data.list.slice(0, 24);
         const dayInfoObj = getDayInfo(dt_txt, name, singleDayHours);
         const hoursArr = createSingleDayHours(singleDayHours);
+        //set to an obj with city name, day and date
         setDayLocationInfo(dayInfoObj);
+        //set hours to an array with 24 objects (hours) with 3 props
         setHoursData(hoursArr);
+        //initialize the hour in the selected view to the first hour
         setSelectedHour(hoursArr[0]);
       })
       .catch((err) => setError(error));
