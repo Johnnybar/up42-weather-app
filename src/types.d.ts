@@ -1,6 +1,6 @@
 interface HourWeatherProps {
   weather: string;
-  time: number;
+  time: string;
   temp: number;
 }
 interface DayLocationProps {
