@@ -1,39 +1,22 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { executeSlider } from "./features/slider";
-import Hour from "../src/components/hour/Hour";
+import Hour from "./components/Hour/Hour";
 import WeatherIcon from "./components/WeatherIcon/WeatherIcon";
 import "./App.scss";
-import { getDayInfo, createHoursArr } from "./utils";
+import {
+  getDayInfo,
+  createHoursArr,
+  fetchDataAxios,
+  fetchDataJson,
+} from "./utils";
+import apiInfo from "../src/assets/api-info.json";
 
 function App() {
   const [hoursData, setHoursData] = useState<HourWeatherProps[]>([]);
   const [dayLocationInfo, setDayLocationInfo] = useState<DayLocationProps>();
-
   const [selectedHour, setSelectedHour] =
     useState<Optional<HourWeatherProps>>(null);
-  const fetchDataJson = async () => {
-    try {
-      const data = await fetch(`mock_data_hourly.json`);
-      return data.json();
-    } catch (error) {
-      return error;
-    }
-  };
-  // const fetchDataAxios = async () => {
-  //   const params = new URLSearchParams();
-  //   params.append("q", "M%C3%BCnchen,DE");
-  //   params.append("appid", "b6907d289e10d714a6e88b30761fhowae22");
-  //   try {
-  //     let url = `/data/2.5/forecast/hourly`;
-
-  //     const { data } = await axios.get(url, { params });
-
-  //     return data;
-  //   } catch (error) {
-  //     return error;
-  //   }
-  // };
 
   const selectHour = (i: number, hoursArray: HourWeatherProps[]) => {
     const selectedHour = hoursArray[i];
@@ -43,12 +26,11 @@ function App() {
   useEffect(() => {
     executeSlider();
     //functioning api call
-    // fetchDataAxios().then((data) => {
+    // fetchDataAxios(apiInfo).then((data) => {
     //   console.log(data, "here");
 
-    //   return data;
     // });
-    fetchDataJson()
+    fetchDataJson(apiInfo)
       .then((data) => {
         console.log(data, "here json call");
         const { name } = data.city;
@@ -59,20 +41,18 @@ function App() {
         const hoursArr = createHoursArr(hours);
         setHoursData(hoursArr);
         setSelectedHour(hoursArr[0]);
-        return data;
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(error);
+      );
   }, []);
 
   return (
-    <div className="up42-app">
+    <div className="weather-app">
       <div className="container">
         <div className="row">
-          {selectedHour && (
-            <div className="col-md-4">
-              <WeatherIcon type={selectedHour.weather} />
-            </div>
-          )}
+          <div className="col-md-4">
+            {selectedHour && <WeatherIcon type={selectedHour.weather} />}
+          </div>
           {dayLocationInfo && selectedHour && (
             <div className="col-md-4">
               {selectedHour.weather}
@@ -89,13 +69,19 @@ function App() {
           )}
         </div>
       </div>
-      <div className=" scroll" style={{ overflowY: "auto", cursor: "grab" }}>
+      <div className="scroll" style={{ overflowY: "auto", cursor: "grab" }}>
         <ul className="" style={{ display: "flex", width: "100%" }}>
           {hoursData &&
             hoursData.map((hour, i) => (
-              <li className="col-2" onClick={() => selectHour(i, hoursData)}>
-                <Hour index={i} hour={hour} />
-              </li>
+              // <li className="col-2" onClick={() => selectHour(i, hoursData)}>
+              <Hour
+                key={i}
+                index={i}
+                hour={hour}
+                hoursData={hoursData}
+                selectHour={selectHour}
+              />
+              // </li>
             ))}
         </ul>
       </div>
