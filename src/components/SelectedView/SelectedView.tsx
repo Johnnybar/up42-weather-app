@@ -1,14 +1,22 @@
+import "./SelectedView.scss";
+
 interface SelectedViewProps {
   hiLoTemp: string;
   selectedHour: HourWeatherProps;
 }
 const SelectedView = ({ hiLoTemp, selectedHour }: SelectedViewProps) => {
   return (
-    <>
-      {selectedHour.weather}
-      {hiLoTemp}
-      {selectedHour.temp}
-    </>
+    <div className="weather-app__selected-view">
+      <div className="weather-app__selected-view-info">
+        <div className="weather-app__selected-view-weather">
+          {selectedHour.weather}
+        </div>
+        <div className="weather-app__selected-view-hiLo-temp">{hiLoTemp}</div>
+      </div>
+      <div className="weather-app__selected-view-temprature text-center">
+        {selectedHour.temp}
+      </div>
+    </div>
   );
 };
 export default SelectedView;

@@ -1,0 +1,15 @@
+@import "../../scss-utils.scss";
+
+.weather-app__selected-view {
+  &-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-hiLo-temp {
+    @include sm-grey-font;
+  }
+  &-weather {
+    @include sm-grey-font;
+  }
+}
