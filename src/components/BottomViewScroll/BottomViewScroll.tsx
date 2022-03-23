@@ -17,7 +17,7 @@ const BottomViewScroll = ({ hoursData, selectHour }: BottomViewProps) => (
       {hoursData &&
         hoursData.map((hour, i) => (
           <Hour
-            key={i}
+            key={`${hour}_${i}`}
             index={i}
             hour={hour}
             hoursData={hoursData}
