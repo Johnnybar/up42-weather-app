@@ -6,6 +6,7 @@ import "./App.scss";
 function App() {
   const [allData, setAllData] = useState([]);
   const [hoursData, setHoursData] = useState<HourWeatherProps[]>([]);
+  const [dayLocationInfo, setDayLocationInfo] = useState<DayLocationProps>();
 
   const fetchDataJson = async () => {
     try {
@@ -85,6 +86,7 @@ function App() {
         const exactDate = `${completeTime.getDate()}.${calculateMonth(
           completeTime.getMonth()
         )}`;
+        // const month = completeTime.getMonth();
 
         const hours = data.list.slice(0, 24);
         const tempratures = hours.map((hour: any) => {
@@ -99,7 +101,22 @@ function App() {
 
         const dayInfo = { name, exactDate, day, hiLoTemp };
         console.log(dayInfo, "dayinfo");
+        setDayLocationInfo(dayInfo);
 
+        const hoursArr = hours.map((hour: any) => {
+          let date = new Date(hour.dt_txt);
+          const time = `${
+            date.getHours() < 10 ? "0" + date.getHours() : date.getHours()
+          }:00`;
+          return {
+            time: time,
+            weather: hour.weather[0].main,
+            temp: convertKelvinToCelcius(hour.main.temp),
+          };
+        });
+        console.log(hoursArr);
+        setHoursData(hoursArr);
+        // console.log(name, dt_txt, day, date, hours);
         return data;
       })
       .catch((err) => console.log(err));
