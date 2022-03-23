@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const calculateDay = (num: number) => {
   const days = [
     "Sunday",
@@ -34,6 +36,7 @@ export const calculateMonth = (num: number) => {
 export const convertKelvinToCelcius = (deg: number) => {
   return Math.floor(deg - 273.15);
 };
+
 export const getDayInfo = (dateAndTime: string, name: string, hours: []) => {
   const tempratures = hours.map((hour: any) => {
     return convertKelvinToCelcius(hour.main.temp);
@@ -55,7 +58,9 @@ export const getDayInfo = (dateAndTime: string, name: string, hours: []) => {
   };
 };
 
-export const createHoursArr = (hours: []): HourWeatherProps[] => {
+export const createHoursArr = (
+  hours: HourWeatherProps[]
+): HourWeatherProps[] => {
   return hours.map((hour: any) => {
     let date = new Date(hour.dt_txt);
     const time = `${
@@ -67,4 +72,28 @@ export const createHoursArr = (hours: []): HourWeatherProps[] => {
       temp: convertKelvinToCelcius(hour.main.temp),
     };
   });
+};
+
+export const fetchDataAxios = async (obj: APIProps) => {
+  const params = new URLSearchParams();
+  params.append("q", obj["q"]);
+  params.append("appid", obj["appid"]);
+  try {
+    let url = obj["url"];
+
+    const { data } = await axios.get(url, { params });
+
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchDataJson = async (obj: APIProps) => {
+  try {
+    const data = await fetch(`mock_data_hourly.json`);
+    return data.json();
+  } catch (error) {
+    return error;
+  }
 };
