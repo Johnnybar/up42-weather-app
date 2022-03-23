@@ -9,4 +9,13 @@ interface DayLocationProps {
   exactDate: string;
   hiLoTemp: string;
 }
+
+interface APIProps {
+  appid: string;
+  q: string;
+  url: string;
+}
 type Optional<T> = T | null;
+
+type SelectHour = (i: number, hoursArray: HourWeatherProps[]) => void;
+//  type SelectHour = (i: number, hoursArray: []) => void;
