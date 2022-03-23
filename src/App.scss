@@ -3,9 +3,4 @@
 .weather-app {
   background-color: $weather-app-blue;
   color: white;
-
-  &__top-view {
-    padding-top: toRem(96);
-    padding-bottom: toRem(144);
-  }
 }
