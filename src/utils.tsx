@@ -64,7 +64,7 @@ const getDayInfo = (dateAndTime: string, name: string, hours: []) => {
 const createSingleDayHours = (
   hours: HourWeatherProps[]
 ): HourWeatherProps[] => {
-  return hours.map((hour: any, i: number) => {
+  return hours.map((hour: any) => {
     //is i necessary?
     let date = new Date(hour.dt_txt);
     const time = `${
@@ -74,7 +74,7 @@ const createSingleDayHours = (
       time: time,
       weather: hour.weather[0].main,
       temp: convertKelvinToCelcius(hour.main.temp) + "°",
-      index: i, //is i necessary
+      selected: false,
     };
   });
 };
@@ -106,7 +106,7 @@ export const fetchDataJson = async (obj: APIProps) => {
 export const getWeatherData = (data: any) => {
   const { name } = data.city;
   const { dt_txt } = data.list[0];
-  const singleDayHours = data.list.slice(0, 24);
+  const singleDayHours = data.list.slice(0, 25);
   const dayInfoObj = getDayInfo(dt_txt, name, singleDayHours);
   const hoursArr = createSingleDayHours(singleDayHours);
   return { dayInfoObj, hoursArr };

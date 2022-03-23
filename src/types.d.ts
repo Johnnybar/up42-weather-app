@@ -2,6 +2,7 @@ interface HourWeatherProps {
   weather: string;
   time: string;
   temp: string;
+  selected: boolean;
 }
 interface DayLocationProps {
   name: string;

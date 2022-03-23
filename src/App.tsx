@@ -15,8 +15,12 @@ function App() {
     useState<Optional<HourWeatherProps>>(null);
 
   const selectHour = (i: number) => {
+    //IS THIS THE BEST?
+    for (const elem of hoursData) {
+      elem.selected = false;
+    }
     const selectedHour = hoursData[i];
-
+    selectedHour.selected = !selectedHour.selected;
     setSelectedHour(selectedHour);
   };
 
