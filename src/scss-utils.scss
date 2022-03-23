@@ -2,24 +2,25 @@
 
 $weather-app-blue: #272a59;
 $weather-app-grey: #a8aabd;
+$weather-app-light-grey: #52557a;
 $weather-app-yellow: #ffc700;
-
-//font-sizes
-$sm-font: toRem(47);
-$md-font: toRem(82);
-$lg-font: toRem(99);
-$xl-font: toRem(246);
-
-//mixins
-@mixin sm-grey-font {
-  font-family: "Roboto-Regular";
-  font-size: toRem(47);
-  color: $weather-app-grey;
-}
+$weather-app-white: white;
 
 //functions
 
 @function toRem($value) {
   $remValue: calc($value / 16) + rem;
   @return $remValue;
+}
+//font-sizes
+$sm-font: toRem(47);
+$md-font: toRem(82);
+$lg-font: toRem(99);
+$xl-font: toRem(240);
+
+//mixins
+@mixin sm-grey-font {
+  font-family: "Roboto-Regular";
+  font-size: toRem(47);
+  color: $weather-app-grey;
 }
