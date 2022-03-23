@@ -2,6 +2,7 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import axios from "axios";
 import { executeSlider } from "./features/slider";
 import Hour from "../src/components/hour/Hour";
+import WeatherIcon from "./components/WeatherIcon/WeatherIcon";
 import "./App.scss";
 
 function App() {
@@ -134,8 +135,11 @@ function App() {
     <div className="up42-app">
       <div className="container">
         <div className="row">
-          <div className="col-md-4">sky icon</div>
-
+          {selectedHour && (
+            <div className="col-md-4">
+              <WeatherIcon type={selectedHour.weather} />
+            </div>
+          )}
           {dayLocationInfo && selectedHour && (
             <div className="col-md-4">
               {selectedHour.weather}
