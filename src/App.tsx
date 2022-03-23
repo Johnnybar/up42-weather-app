@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import axios from "axios";
 import { executeSlider } from "./features/slider";
+import Hour from "../src/components/hour/Hour";
 import "./App.scss";
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
   const [hoursData, setHoursData] = useState<HourWeatherProps[]>([]);
   const [dayLocationInfo, setDayLocationInfo] = useState<DayLocationProps>();
 
+  const [selectedHour, setSelectedHour] =
+    useState<Optional<HourWeatherProps>>(null);
   const fetchDataJson = async () => {
     try {
       const data = await fetch(`mock_data_hourly.json`);
@@ -64,6 +67,10 @@ function App() {
     return months[num];
   };
 
+  const selectHour = (i: number, hoursArray: HourWeatherProps[]) => {
+    const selectedHour = hoursArray[i];
+    setSelectedHour(selectedHour);
+  };
   const convertKelvinToCelcius = (deg: number) => {
     return Math.floor(deg - 273.15);
   };
@@ -116,6 +123,7 @@ function App() {
         });
         console.log(hoursArr);
         setHoursData(hoursArr);
+        setSelectedHour(hoursArr[0]);
         // console.log(name, dt_txt, day, date, hours);
         return data;
       })
@@ -127,12 +135,32 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col-md-4">sky icon</div>
-          <div className="col-md-4">weather</div>
-          <div className="col-md-4">info </div>
+
+          {dayLocationInfo && selectedHour && (
+            <div className="col-md-4">
+              {selectedHour.weather}
+              {dayLocationInfo.hiLoTemp}
+              {selectedHour.temp}
+            </div>
+          )}
+          {dayLocationInfo && hoursData && (
+            <div className="col-md-4">
+              <div>{dayLocationInfo.name}</div>
+              <div>{dayLocationInfo.day}</div>
+              <div>{dayLocationInfo.exactDate}</div>
+            </div>
+          )}
         </div>
       </div>
       <div className=" scroll" style={{ overflowY: "auto", cursor: "grab" }}>
-        <ul className="" style={{ display: "flex", width: "100%" }}></ul>
+        <ul className="" style={{ display: "flex", width: "100%" }}>
+          {hoursData &&
+            hoursData.map((hour, i) => (
+              <li className="col-2" onClick={() => selectHour(i, hoursData)}>
+                <Hour index={i} hour={hour} />
+              </li>
+            ))}
+        </ul>
       </div>
     </div>
   );
