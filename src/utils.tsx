@@ -43,7 +43,10 @@ export const getDayInfo = (dateAndTime: string, name: string, hours: []) => {
   });
 
   const hiLoTemp =
-    String(Math.min(...tempratures)) + "/" + String(Math.max(...tempratures));
+    String(Math.min(...tempratures)) +
+    "°/" +
+    String(Math.max(...tempratures)) +
+    "°";
   const completeTime = new Date(dateAndTime);
   const day = calculateDay(completeTime.getDay());
   const exactDate = `${completeTime.getDate()}.${calculateMonth(
@@ -58,7 +61,7 @@ export const getDayInfo = (dateAndTime: string, name: string, hours: []) => {
   };
 };
 
-export const createHoursArr = (
+export const createSingleDayHours = (
   hours: HourWeatherProps[]
 ): HourWeatherProps[] => {
   return hours.map((hour: any) => {
@@ -69,7 +72,7 @@ export const createHoursArr = (
     return {
       time: time,
       weather: hour.weather[0].main,
-      temp: convertKelvinToCelcius(hour.main.temp),
+      temp: convertKelvinToCelcius(hour.main.temp) + "°",
     };
   });
 };
