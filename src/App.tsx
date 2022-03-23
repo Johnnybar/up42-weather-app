@@ -1,9 +1,12 @@
-import React, { SyntheticEvent, useEffect } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import axios from "axios";
 import { executeSlider } from "./features/slider";
 import "./App.scss";
 
 function App() {
+  const [allData, setAllData] = useState([]);
+  const [hoursData, setHoursData] = useState<HourWeatherProps[]>([]);
+
   const fetchDataJson = async () => {
     try {
       const data = await fetch(`mock_data_hourly.json`);
@@ -27,6 +30,42 @@ function App() {
   //   }
   // };
 
+  const calculateDay = (num: number) => {
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    return days[num];
+  };
+
+  const calculateMonth = (num: number) => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    return months[num];
+  };
+
+  const convertKelvinToCelcius = (deg: number) => {
+    return Math.floor(deg - 273.15);
+  };
   useEffect(() => {
     executeSlider();
     //functioning api call
@@ -34,11 +73,32 @@ function App() {
     //   console.log(data, "here");
 
     //   return data;
-
     // });
     fetchDataJson()
       .then((data) => {
-        console.log(data, "here");
+        console.log(data, "here json call");
+
+        const { name } = data.city;
+        const { dt_txt } = data.list[0];
+        const completeTime = new Date(dt_txt);
+        const day = calculateDay(completeTime.getDay());
+        const exactDate = `${completeTime.getDate()}.${calculateMonth(
+          completeTime.getMonth()
+        )}`;
+
+        const hours = data.list.slice(0, 24);
+        const tempratures = hours.map((hour: any) => {
+          return convertKelvinToCelcius(hour.main.temp);
+        });
+
+        const hiLoTemp =
+          String(Math.min(...tempratures)) +
+          "/" +
+          String(Math.max(...tempratures));
+        console.log("this is date", completeTime);
+
+        const dayInfo = { name, exactDate, day, hiLoTemp };
+        console.log(dayInfo, "dayinfo");
 
         return data;
       })
@@ -55,43 +115,7 @@ function App() {
         </div>
       </div>
       <div className=" scroll" style={{ overflowY: "auto", cursor: "grab" }}>
-        <ul className="" style={{ display: "flex", width: "100%" }}>
-          <li className="col-2">
-            <div>time</div>
-            <div>icon</div>
-            <div>degree</div>
-          </li>
-          <li className="col-2">
-            <div>time</div>
-            <div>icon</div>
-            <div>degree</div>
-          </li>
-          <li className="col-2">
-            <div>time</div>
-            <div>icon</div>
-            <div>degree</div>
-          </li>
-          <li className="col-2">
-            <div>time</div>
-            <div>icon</div>
-            <div>degree</div>
-          </li>
-          <li className="col-2">
-            <div>time</div>
-            <div>icon</div>
-            <div>degree</div>
-          </li>
-          <li className="col-2">
-            <div>time</div>
-            <div>icon</div>
-            <div>degree</div>
-          </li>
-          <li className="col-2">
-            <div>time</div>
-            <div>icon</div>
-            <div>degree</div>
-          </li>
-        </ul>
+        <ul className="" style={{ display: "flex", width: "100%" }}></ul>
       </div>
     </div>
   );
