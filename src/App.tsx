@@ -8,7 +8,7 @@ import SelectedView from "./components/SelectedView/SelectedView";
 import "./App.scss";
 import {
   getDayInfo,
-  createHoursArr,
+  createSingleDayHours,
   fetchDataAxios,
   fetchDataJson,
 } from "./utils";
@@ -38,10 +38,10 @@ function App() {
         console.log(data, "here json call");
         const { name } = data.city;
         const { dt_txt } = data.list[0];
-        const hours = data.list.slice(0, 24);
-        const dayInfoObj = getDayInfo(dt_txt, name, hours);
+        const singleDayHours = data.list.slice(0, 24);
+        const dayInfoObj = getDayInfo(dt_txt, name, singleDayHours);
+        const hoursArr = createSingleDayHours(singleDayHours);
         setDayLocationInfo(dayInfoObj);
-        const hoursArr = createHoursArr(hours);
         setHoursData(hoursArr);
         setSelectedHour(hoursArr[0]);
       })
@@ -50,7 +50,7 @@ function App() {
 
   return (
     <div className="weather-app">
-      <div className="container">
+      <div className="weather-app__top-view container">
         <div className="row">
           <div className="col-md-4">
             {selectedHour && <WeatherIcon type={selectedHour.weather} />}
@@ -70,11 +70,16 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="scroll" style={{ overflowY: "auto", cursor: "grab" }}>
-        <ul className="" style={{ display: "flex", width: "100%" }}>
+      <div
+        className="weather-app__bottom-view scroll"
+        style={{ overflowY: "auto", cursor: "grab" }}
+      >
+        <ul
+          className="weather-app__bottom-view-hour-list"
+          style={{ display: "flex", width: "100%" }}
+        >
           {hoursData &&
             hoursData.map((hour, i) => (
-              // <li className="col-2" onClick={() => selectHour(i, hoursData)}>
               <Hour
                 key={i}
                 index={i}
@@ -82,11 +87,14 @@ function App() {
                 hoursData={hoursData}
                 selectHour={selectHour}
               />
-              // </li>
             ))}
         </ul>
       </div>
-      {error && <div>The following error occurred: {error}</div>}
+      {error && (
+        <div className="weather-app__error">
+          The following error occurred: {error}
+        </div>
+      )}
     </div>
   );
 }
