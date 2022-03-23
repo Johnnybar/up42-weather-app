@@ -16,6 +16,7 @@ import apiInfo from "../src/assets/api-info.json";
 
 function App() {
   const [hoursData, setHoursData] = useState<HourWeatherProps[]>([]);
+  const [error, setError] = useState<Optional<string>>(null);
   const [dayLocationInfo, setDayLocationInfo] = useState<DayLocationProps>();
   const [selectedHour, setSelectedHour] =
     useState<Optional<HourWeatherProps>>(null);
@@ -44,8 +45,8 @@ function App() {
         setHoursData(hoursArr);
         setSelectedHour(hoursArr[0]);
       })
-      .catch((err) => console.log(error));
-  });
+      .catch((err) => setError(error));
+  }, [error]);
 
   return (
     <div className="weather-app">
@@ -85,6 +86,7 @@ function App() {
             ))}
         </ul>
       </div>
+      {error && <div>The following error occurred: {error}</div>}
     </div>
   );
 }
