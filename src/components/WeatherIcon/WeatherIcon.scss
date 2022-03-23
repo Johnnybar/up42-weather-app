@@ -3,4 +3,9 @@
 .weather-app__weather-icon {
   width: toRem(328);
   height: toRem(328);
+
+  &-container {
+    text-align: center;
+    margin-bottom: toRem(50);
+  }
 }
