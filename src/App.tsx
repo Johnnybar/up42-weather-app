@@ -4,9 +4,9 @@ import { executeSlider } from "./features/slider";
 import Hour from "../src/components/hour/Hour";
 import WeatherIcon from "./components/WeatherIcon/WeatherIcon";
 import "./App.scss";
+import { getDayInfo, createHoursArr } from "./utils";
 
 function App() {
-  const [allData, setAllData] = useState([]);
   const [hoursData, setHoursData] = useState<HourWeatherProps[]>([]);
   const [dayLocationInfo, setDayLocationInfo] = useState<DayLocationProps>();
 
@@ -35,46 +35,11 @@ function App() {
   //   }
   // };
 
-  const calculateDay = (num: number) => {
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-
-    return days[num];
-  };
-
-  const calculateMonth = (num: number) => {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    return months[num];
-  };
-
   const selectHour = (i: number, hoursArray: HourWeatherProps[]) => {
     const selectedHour = hoursArray[i];
     setSelectedHour(selectedHour);
   };
-  const convertKelvinToCelcius = (deg: number) => {
-    return Math.floor(deg - 273.15);
-  };
+
   useEffect(() => {
     executeSlider();
     //functioning api call
@@ -86,46 +51,14 @@ function App() {
     fetchDataJson()
       .then((data) => {
         console.log(data, "here json call");
-
         const { name } = data.city;
         const { dt_txt } = data.list[0];
-        const completeTime = new Date(dt_txt);
-        const day = calculateDay(completeTime.getDay());
-        const exactDate = `${completeTime.getDate()}.${calculateMonth(
-          completeTime.getMonth()
-        )}`;
-        // const month = completeTime.getMonth();
-
         const hours = data.list.slice(0, 24);
-        const tempratures = hours.map((hour: any) => {
-          return convertKelvinToCelcius(hour.main.temp);
-        });
-
-        const hiLoTemp =
-          String(Math.min(...tempratures)) +
-          "/" +
-          String(Math.max(...tempratures));
-        console.log("this is date", completeTime);
-
-        const dayInfo = { name, exactDate, day, hiLoTemp };
-        console.log(dayInfo, "dayinfo");
-        setDayLocationInfo(dayInfo);
-
-        const hoursArr = hours.map((hour: any) => {
-          let date = new Date(hour.dt_txt);
-          const time = `${
-            date.getHours() < 10 ? "0" + date.getHours() : date.getHours()
-          }:00`;
-          return {
-            time: time,
-            weather: hour.weather[0].main,
-            temp: convertKelvinToCelcius(hour.main.temp),
-          };
-        });
-        console.log(hoursArr);
+        const dayInfoObj = getDayInfo(dt_txt, name, hours);
+        setDayLocationInfo(dayInfoObj);
+        const hoursArr = createHoursArr(hours);
         setHoursData(hoursArr);
         setSelectedHour(hoursArr[0]);
-        // console.log(name, dt_txt, day, date, hours);
         return data;
       })
       .catch((err) => console.log(err));
