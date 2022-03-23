@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-type SelectHour = (i: number, hoursArray: []) => void;
 interface HourProps {
   index: number;
   hour: HourWeatherProps;
