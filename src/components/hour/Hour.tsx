@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import "./Hour.scss";
+import WeatherIcon from "../WeatherIcon/WeatherIcon";
 interface HourProps {
   index: number;
   hour: HourWeatherProps;
@@ -7,10 +9,14 @@ interface HourProps {
 }
 const Hour = ({ index, hour, hoursData, selectHour }: HourProps) => {
   return (
-    <li className="col-2" onClick={() => selectHour(index, hoursData as [])}>
-      <div>{hour.time}</div>
-      <div>{hour.temp}</div>
-      <div>{hour.weather}</div>
+    <li
+      className="weather-app__hour-view"
+      onClick={() => selectHour(index, hoursData as [])}
+    >
+      <div className="weather-app__hour-view-time">{hour.time}</div>
+      <WeatherIcon type={hour.weather} />
+      <div className="weather-app__hour-view-temp">{hour.temp}</div>
+      {/* <div className="weather-app__hour-view-weather">{hour.weather}</div> */}
     </li>
   );
 };

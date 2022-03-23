@@ -1,0 +1,23 @@
+@import "../../scss-utils.scss";
+
+.weather-app__hour-view {
+  list-style: none;
+  min-width: toRem(212);
+  min-height: toRem(496);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-time {
+    @include sm-grey-font;
+  }
+  &-temp {
+  }
+  &-weather {
+  }
+
+  .weather-app__weather-icon {
+    width: toRem(120);
+    height: toRem(120);
+  }
+}
