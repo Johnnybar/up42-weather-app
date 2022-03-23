@@ -3,6 +3,8 @@ import axios from "axios";
 import { executeSlider } from "./features/slider";
 import Hour from "./components/Hour/Hour";
 import WeatherIcon from "./components/WeatherIcon/WeatherIcon";
+import DateLocation from "./components/DateLocation/DateLocation";
+import SelectedView from "./components/SelectedView/SelectedView";
 import "./App.scss";
 import {
   getDayInfo,
@@ -42,9 +44,8 @@ function App() {
         setHoursData(hoursArr);
         setSelectedHour(hoursArr[0]);
       })
-      .catch((err) => console.log(error);
-      );
-  }, []);
+      .catch((err) => console.log(error));
+  });
 
   return (
     <div className="weather-app">
@@ -53,20 +54,19 @@ function App() {
           <div className="col-md-4">
             {selectedHour && <WeatherIcon type={selectedHour.weather} />}
           </div>
-          {dayLocationInfo && selectedHour && (
-            <div className="col-md-4">
-              {selectedHour.weather}
-              {dayLocationInfo.hiLoTemp}
-              {selectedHour.temp}
-            </div>
-          )}
-          {dayLocationInfo && hoursData && (
-            <div className="col-md-4">
-              <div>{dayLocationInfo.name}</div>
-              <div>{dayLocationInfo.day}</div>
-              <div>{dayLocationInfo.exactDate}</div>
-            </div>
-          )}
+          <div className="col-md-4">
+            {dayLocationInfo && selectedHour && (
+              <SelectedView
+                hiLoTemp={dayLocationInfo.hiLoTemp}
+                selectedHour={selectedHour}
+              />
+            )}
+          </div>
+          <div className="col-md-4">
+            {dayLocationInfo && hoursData && (
+              <DateLocation dayLocationInfo={dayLocationInfo} />
+            )}
+          </div>
         </div>
       </div>
       <div className="scroll" style={{ overflowY: "auto", cursor: "grab" }}>
