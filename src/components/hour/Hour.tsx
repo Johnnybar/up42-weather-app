@@ -10,7 +10,9 @@ interface HourProps {
 const Hour = ({ index, hour, hoursData, selectHour }: HourProps) => {
   return (
     <li
-      className="weather-app__hour-view"
+      className={`weather-app__hour-view ${
+        hour.selected ? "weather-app__hour-view--selected" : ""
+      }`}
       onClick={() => selectHour(index, hoursData as [])}
     >
       <div className="weather-app__hour-view-time">{hour.time}</div>

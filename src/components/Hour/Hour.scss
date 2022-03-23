@@ -3,19 +3,29 @@
 .weather-app__hour-view {
   list-style: none;
   min-width: toRem(212);
-  min-height: toRem(496);
+  min-height: toRem(350);
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: toRem(20) 0 toRem(20) 0;
+
+  &-list {
+    margin-bottom: toRem(96);
+  }
+  &--selected {
+    background-color: $weather-app-light-grey;
+  }
 
   &-time {
     @include sm-grey-font;
   }
-  &-temp {
-  }
-  &-weather {
-  }
 
+  &-temp {
+    font-family: "Roboto";
+    font-size: $md-font;
+    color: $weather-app-white;
+  }
+  //for the smaller single hour icon
   .weather-app__weather-icon {
     width: toRem(120);
     height: toRem(120);
