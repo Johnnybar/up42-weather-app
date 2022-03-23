@@ -1,0 +1,7 @@
+@import "../../scss-utils.scss";
+
+.weather-app__date-location {
+  &-city {
+    @include sm-grey-font;
+  }
+}
