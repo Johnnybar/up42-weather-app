@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
+import "./Error.scss";
 
 interface ErrorProps {
-    message: string
+  message: string;
 }
 
 const Error = ({ message }: ErrorProps) => (
-  <div className='weather-app__error'>
-    The following error occurred: {message}
+  <div className="weather-app__error">
+    The following error occurred: <strong>{message}</strong>
   </div>
 );
 
