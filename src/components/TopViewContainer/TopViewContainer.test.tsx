@@ -36,7 +36,7 @@ describe("TopViewContainer", () => {
     expect(cityElement).toBeInTheDocument();
   });
 
-  test("verifies that hour selected is same rendered in the selected view,", () => {
+  test("verifies hour selected is the same hour rendered in the selected view,", () => {
     render(
       <>
         <TopViewContainer
