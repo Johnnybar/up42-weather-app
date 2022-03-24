@@ -111,3 +111,10 @@ export const getWeatherData = (data: any) => {
   const hoursArr = createSingleDayHours(singleDayHours);
   return { dayInfoObj, hoursArr };
 };
+
+export const addClassIfSelected = (
+  hour: HourWeatherProps,
+  className: string
+) => {
+  return hour.selected ? className : "";
+};
