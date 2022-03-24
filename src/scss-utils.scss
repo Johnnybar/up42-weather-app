@@ -1,3 +1,10 @@
+//functions
+
+@function toRem($value) {
+  $remValue: calc($value / 16) + rem;
+  @return $remValue;
+}
+
 //color variables
 
 $weather-app-blue: #272a59;
@@ -6,24 +13,21 @@ $weather-app-light-grey: #52557a;
 $weather-app-yellow: #ffc700;
 $weather-app-white: white;
 
-//functions
+//fonts
 
-@function toRem($value) {
-  $remValue: calc($value / 16) + rem;
-  @return $remValue;
-}
+$primary-font-bold: "Roboto-Bold";
+$primary-font-regular: "Roboto-Regular";
+
 //font-sizes
+
 $sm-font: toRem(47);
 $md-font: toRem(82);
 $lg-font: toRem(99);
 $xl-font: toRem(240);
 
 //mixins
+
 @mixin sm-grey-font {
   font-size: toRem(47);
   color: $weather-app-grey;
 }
-
-//fonts
-$primary-font-bold: "Roboto-Bold";
-$primary-font-regular: "Roboto-Regular";
