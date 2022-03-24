@@ -12,7 +12,7 @@ To run unit tests, run `npm test`. To run Cypress tests, run `npm run cypress`.
 
 **Note**
 
-- If there are any issues with testing in cypress - it is dependent on the BaseUrl which is currently set to `http://localhost:3000` in `cypress.json`.
+If there are any issues with testing in cypress - it is dependent on the BaseUrl which is currently set to `http://localhost:3000` in `cypress.json`.
 
 ## **UI**
 
