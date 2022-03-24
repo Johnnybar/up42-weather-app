@@ -93,15 +93,6 @@ export const fetchData = async (obj: APIProps) => {
   }
 };
 
-export const fetchDataJson = async (obj: APIProps) => {
-  try {
-    const data = await fetch(`mock_data_hourly.json`);
-    return data.json();
-  } catch (error) {
-    return error;
-  }
-};
-
 export const getWeatherData = (data: any) => {
   const { name } = data.city;
   const { dt_txt } = data.list[0];

@@ -5,7 +5,7 @@ import BottomViewScroll from "./components/BottomViewScroll/BottomViewScroll";
 import Error from "./components/Error/Error";
 import Fallback from "./components/Fallback/Fallback";
 import "./App.scss";
-import { getWeatherData, fetchDataJson, fetchData } from "./utils";
+import { getWeatherData, fetchData } from "./utils";
 import apiInfo from "../src/assets/api-info.json";
 
 function App() {
@@ -49,6 +49,7 @@ function App() {
       />
       <BottomViewScroll selectHour={selectHour} hoursData={hoursData} />
       {error && <Error message={error} />}
+
       {(!hoursData.length || !dayLocationInfo) && <Fallback />}
     </div>
   );
