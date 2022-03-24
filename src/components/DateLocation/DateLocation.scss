@@ -13,12 +13,4 @@
     font-size: $lg-font;
     word-wrap: break-word;
   }
-
-  @media only screen and (max-device-width: 480px) {
-    &-city,
-    &-day,
-    &-date {
-      word-wrap: break-word;
-    }
-  }
 }
