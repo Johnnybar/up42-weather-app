@@ -13,7 +13,10 @@ const SelectedView = ({ hiLoTemp, selectedHour }: SelectedViewProps) => {
         </div>
         <div className="weather-app__selected-view-hiLo-temp">{hiLoTemp}</div>
       </div>
-      <div className="weather-app__selected-view-temprature text-center">
+      <div
+        className="weather-app__selected-view-temprature text-center"
+        data-testid="selected-view-temprature"
+      >
         {selectedHour.temp}
       </div>
     </div>
