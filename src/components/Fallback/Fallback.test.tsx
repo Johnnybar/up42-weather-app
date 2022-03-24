@@ -18,7 +18,7 @@ describe("Fallback", () => {
 
   test("renders fallback with message correctly", () => {
     render(<Fallback />, container);
-    const errorText = screen.getByText(/Please wait/i);
-    expect(errorText).toBeInTheDocument();
+    const fallbackText = screen.getByText(/Please wait/i);
+    expect(fallbackText).toBeInTheDocument();
   });
 });
