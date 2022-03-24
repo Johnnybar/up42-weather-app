@@ -14,27 +14,30 @@ const TopViewContainer = ({
   selectedHour,
   dayLocationInfo,
   hoursData,
-}: TopViewProps) => (
-  <div className="weather-app__top-view container-fluid">
-    <div className="row">
-      <div className="col-md-4 weather-app__weather-icon-container">
-        {selectedHour && <WeatherIcon type={selectedHour.weather} />}
-      </div>
-      <div className="col-md-4">
-        {dayLocationInfo && selectedHour && (
-          <SelectedView
-            hiLoTemp={dayLocationInfo.hiLoTemp}
-            selectedHour={selectedHour}
-          />
-        )}
-      </div>
-      <div className="col-md-4">
-        {dayLocationInfo && hoursData && (
-          <DateLocation dayLocationInfo={dayLocationInfo} />
-        )}
+}: TopViewProps) => {
+  selectedHour = selectedHour || hoursData[0];
+  return (
+    <div className="weather-app__top-view container-fluid">
+      <div className="row">
+        <div className="col-md-4 weather-app__weather-icon-container">
+          {selectedHour && <WeatherIcon type={selectedHour.weather} />}
+        </div>
+        <div className="col-md-4">
+          {dayLocationInfo && selectedHour && (
+            <SelectedView
+              hiLoTemp={dayLocationInfo.hiLoTemp}
+              selectedHour={selectedHour}
+            />
+          )}
+        </div>
+        <div className="col-md-4">
+          {dayLocationInfo && hoursData && (
+            <DateLocation dayLocationInfo={dayLocationInfo} />
+          )}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default TopViewContainer;

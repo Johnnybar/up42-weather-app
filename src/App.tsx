@@ -34,8 +34,6 @@ function App() {
         setDayLocationInfo(dayInfoObj);
         //set hours to an array with 24 objects (hours) with 3 props
         setHoursData(hoursArr);
-        //initialize the hour in the selected view to the first hour
-        setSelectedHour(hoursArr[0]);
       })
       .catch((err) => {
         setError(err.message || "An Error Occured");
@@ -51,7 +49,6 @@ function App() {
       />
       <BottomViewScroll selectHour={selectHour} hoursData={hoursData} />
       {error && <Error message={error} />}
-
       {(!hoursData.length || !dayLocationInfo) && <Fallback />}
     </div>
   );
