@@ -33,6 +33,7 @@ describe("Hour", () => {
     const hourTimeElement = screen.getByText(/19:00/i);
     expect(hourTimeElement).toBeInTheDocument();
   });
+
   test("renders selected hour with background color", () => {
     render(
       <Hour

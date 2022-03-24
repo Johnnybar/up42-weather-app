@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { unmountComponentAtNode } from "react-dom";
 import SelectedView from "./SelectedView";
 import { mockHiLoTemp, mockSelectedHour } from "../../mocks";
+
 describe("SelectedView", () => {
   let container: any;
 
