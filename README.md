@@ -16,7 +16,7 @@ If there are any issues with testing in cypress - it is dependent on the BaseUrl
 
 ## **UI**
 
-Following the guidelines of the design, proportions and element styling was kept as-is, with css variables set in `scss-utils.scss` to maintain design consistency throughout the app. Drag-to-scroll through the bottom section is possible thanks to the slider feature added.
+Following the guidelines of the prototype, proportions and element styling were kept exactly as in the design, with css variables set in `scss-utils.scss` to maintain design consistency throughout the app. Drag-to-scroll through the bottom section is possible thanks to the slider feature added.
 
 ## **App structure**
 
