@@ -1,4 +1,5 @@
 import Hour from "../Hour/Hour";
+import "./BottomViewScroll.scss";
 
 interface BottomViewProps {
   hoursData: HourWeatherProps[];
@@ -6,14 +7,8 @@ interface BottomViewProps {
 }
 
 const BottomViewScroll = ({ hoursData, selectHour }: BottomViewProps) => (
-  <div
-    className="weather-app__bottom-view scroll"
-    style={{ overflowY: "auto", cursor: "grab" }}
-  >
-    <ul
-      className="weather-app__bottom-view-hour-list"
-      style={{ display: "flex", width: "100%" }}
-    >
+  <div className="weather-app__bottom-view scroll">
+    <ul className="weather-app__bottom-view-hour-list">
       {hoursData &&
         hoursData.map((hour, i) => (
           <Hour
