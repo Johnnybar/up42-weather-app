@@ -5,9 +5,10 @@
     @include sm-grey-font;
     word-wrap: break-word;
   }
+
   &-day,
   &-date {
-    font-family: "Roboto-Bold";
+    font-family: $primary-font-bold;
     color: $weather-app-white;
     font-size: $lg-font;
     word-wrap: break-word;

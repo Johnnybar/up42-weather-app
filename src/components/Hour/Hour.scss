@@ -12,6 +12,7 @@
   &-list {
     margin-bottom: toRem(96);
   }
+
   &--selected {
     background-color: $weather-app-light-grey;
   }
@@ -21,9 +22,9 @@
   }
 
   &-temp {
-    font-family: "Roboto";
     font-size: $md-font;
     color: $weather-app-white;
+    font-family: $primary-font-bold;
   }
   //for the smaller single hour icon
   .weather-app__weather-icon {

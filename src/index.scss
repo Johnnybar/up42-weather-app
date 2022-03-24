@@ -1,13 +1,10 @@
+@import "./scss-utils.scss";
+
 body {
   margin: 0;
-  font-family: "Roboto-Regular";
+  font-family: $primary-font-regular;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 @font-face {

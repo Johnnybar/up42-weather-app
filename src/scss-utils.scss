@@ -20,7 +20,10 @@ $xl-font: toRem(240);
 
 //mixins
 @mixin sm-grey-font {
-  font-family: "Roboto-Regular";
   font-size: toRem(47);
   color: $weather-app-grey;
 }
+
+//fonts
+$primary-font-bold: "Roboto-Bold";
+$primary-font-regular: "Roboto-Regular";

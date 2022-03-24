@@ -2,6 +2,7 @@
 
 .weather-app__selected-view {
   padding-right: toRem(70);
+
   &-info {
     display: flex;
     justify-content: space-between;
@@ -11,8 +12,10 @@
   &-weather {
     @include sm-grey-font;
   }
+
   &-temprature {
     color: $weather-app-white;
     font-size: $xl-font;
+    font-family: $primary-font-bold;
   }
 }
