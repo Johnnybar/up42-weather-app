@@ -79,13 +79,12 @@ const createSingleDayHours = (
   });
 };
 
-export const fetchDataAxios = async (obj: APIProps) => {
+export const fetchData = async (obj: APIProps) => {
   const params = new URLSearchParams();
   params.append("q", obj["q"]);
   params.append("appid", obj["appid"]);
   try {
     let url = obj["url"];
-
     const { data } = await axios.get(url, { params });
 
     return data;

@@ -4,7 +4,7 @@ import TopViewContainer from "./components/TopViewContainer/TopViewContainer";
 import BottomViewScroll from "./components/BottomViewScroll/BottomViewScroll";
 import Error from "./components/Error/Error";
 import "./App.scss";
-import { getWeatherData, fetchDataJson, fetchDataAxios } from "./utils";
+import { getWeatherData, fetchDataJson, fetchData } from "./utils";
 import apiInfo from "../src/assets/api-info.json";
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     executeSlider();
 
-    fetchDataJson(apiInfo)
+    fetchData(apiInfo)
       .then((data) => {
         console.log(data, "here json call");
         const { dayInfoObj, hoursArr } = getWeatherData(data);
