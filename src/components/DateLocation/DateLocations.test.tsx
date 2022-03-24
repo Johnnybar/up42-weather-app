@@ -18,7 +18,7 @@ describe("DateLocation", () => {
 
   test("renders Date Location information correctly", () => {
     render(<DateLocation dayLocationInfo={mockDayLocationInfo} />, container);
-    const testElement = screen.getByText(/Berlin/i);
-    expect(testElement).toBeInTheDocument();
+    const cityElement = screen.getByText(/Berlin/i);
+    expect(cityElement).toBeInTheDocument();
   });
 });
