@@ -2,8 +2,7 @@
 
 ## **Introduction**
 
-The app was created using React, TypeScript and Sass,
-with testing possible using react-testing-library and Cypress (I am fairly new to Cypress).
+The app was created using React, TypeScript, Sass and the OpenWeatherMap API, with testing possible using react-testing-library and Cypress (I am fairly new to Cypress).
 It is based on the design provided and should display weather for 24 hours, including scrolling capability and click-to-change main view functionality.
 
 ## **Instructions**
