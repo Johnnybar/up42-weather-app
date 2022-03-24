@@ -3,6 +3,7 @@ import "./DateLocation.scss";
 interface DateLocationProps {
   dayLocationInfo: DayLocationProps;
 }
+
 const DateLocation = ({ dayLocationInfo }: DateLocationProps) => {
   return (
     <div className="weather-app__date-location">

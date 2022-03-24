@@ -2,9 +2,11 @@ import React from "react";
 import clouds from "../../assets/weather-cloud.svg";
 import clear from "../../assets/weather-sun.svg";
 import "./WeatherIcon.scss";
+
 interface WeatherIconProps {
   type: string;
 }
+
 const WeatherIcon = ({ type }: WeatherIconProps) => {
   return (
     <img

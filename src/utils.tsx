@@ -106,7 +106,7 @@ export const fetchDataJson = async (obj: APIProps) => {
 export const getWeatherData = (data: any) => {
   const { name } = data.city;
   const { dt_txt } = data.list[0];
-  const singleDayHours = data.list.slice(0, 25);
+  const singleDayHours = data.list.slice(0, 24);
   const dayInfoObj = getDayInfo(dt_txt, name, singleDayHours);
   const hoursArr = createSingleDayHours(singleDayHours);
   return { dayInfoObj, hoursArr };
