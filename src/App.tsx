@@ -15,12 +15,11 @@ function App() {
     useState<Optional<HourWeatherProps>>(null);
 
   const selectHour = (i: number) => {
-    //IS THIS THE BEST?
-    for (const elem of hoursData) {
-      elem.selected = false;
-    }
+    //remove previously selected and select current
+    hoursData.forEach((hour, index) => {
+      hour.selected = index === i ? true : false;
+    });
     const selectedHour = hoursData[i];
-    selectedHour.selected = !selectedHour.selected;
     setSelectedHour(selectedHour);
   };
 
@@ -44,7 +43,7 @@ function App() {
   }, []);
 
   return (
-    <div className="weather-app">
+    <div className="weather-app" data-testid="app-test-id">
       <TopViewContainer
         dayLocationInfo={dayLocationInfo}
         selectedHour={selectedHour}
