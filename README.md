@@ -1,4 +1,4 @@
-#**24-Hour Weather Forecast App**#
+#24-Hour Weather Forecast App#
 
 ##**Introduction**##
 
