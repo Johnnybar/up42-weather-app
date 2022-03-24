@@ -4,6 +4,7 @@ interface SelectedViewProps {
   hiLoTemp: string;
   selectedHour: HourWeatherProps;
 }
+
 const SelectedView = ({ hiLoTemp, selectedHour }: SelectedViewProps) => {
   return (
     <div className="weather-app__selected-view">
