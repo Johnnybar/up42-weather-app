@@ -25,7 +25,7 @@ describe("BottomViewScroll", () => {
       />,
       container
     );
-    const cityElement = screen.getByText(/15:00/i);
-    expect(cityElement).toBeInTheDocument();
+    const TimeElement = screen.getByText(/15:00/i);
+    expect(TimeElement).toBeInTheDocument();
   });
 });
