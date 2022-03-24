@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { executeSlider } from "./features/slider";
 import TopViewContainer from "./components/TopViewContainer/TopViewContainer";
 import BottomViewScroll from "./components/BottomViewScroll/BottomViewScroll";
 import Error from "./components/Error/Error";
 import Fallback from "./components/Fallback/Fallback";
-import "./App.scss";
+import { executeSlider } from "./features/slider";
 import { getWeatherData, fetchData } from "./utils";
 import apiInfo from "../src/assets/api-info.json";
+import "./App.scss";
 
 function App() {
   const [hoursData, setHoursData] = useState<HourWeatherProps[]>([]);
