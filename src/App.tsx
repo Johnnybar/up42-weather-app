@@ -3,6 +3,7 @@ import { executeSlider } from "./features/slider";
 import TopViewContainer from "./components/TopViewContainer/TopViewContainer";
 import BottomViewScroll from "./components/BottomViewScroll/BottomViewScroll";
 import Error from "./components/Error/Error";
+import Fallback from "./components/Fallback/Fallback";
 import "./App.scss";
 import { getWeatherData, fetchDataJson, fetchData } from "./utils";
 import apiInfo from "../src/assets/api-info.json";
@@ -28,7 +29,6 @@ function App() {
 
     fetchData(apiInfo)
       .then((data) => {
-        console.log(data, "here json call");
         const { dayInfoObj, hoursArr } = getWeatherData(data);
         //set to an obj with city name, day and date
         setDayLocationInfo(dayInfoObj);
@@ -51,6 +51,8 @@ function App() {
       />
       <BottomViewScroll selectHour={selectHour} hoursData={hoursData} />
       {error && <Error message={error} />}
+
+      {(!hoursData.length || !dayLocationInfo) && <Fallback />}
     </div>
   );
 }
