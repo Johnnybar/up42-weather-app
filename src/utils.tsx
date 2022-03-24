@@ -37,6 +37,7 @@ export const convertKelvinToCelcius = (deg: number) => {
   return Math.floor(deg - 273.15);
 };
 
+//generate data for city, day, date and high/low tempratures (for top section)
 const getDayInfo = (dateAndTime: string, name: string, hours: []) => {
   const tempratures = hours.map((hour: any) => {
     return convertKelvinToCelcius(hour.main.temp);
@@ -61,11 +62,11 @@ const getDayInfo = (dateAndTime: string, name: string, hours: []) => {
   };
 };
 
+//create single day object for bottom view and click-to-select functionality
 const createSingleDayHours = (
   hours: HourWeatherProps[]
 ): HourWeatherProps[] => {
   return hours.map((hour: any) => {
-    //is i necessary?
     let date = new Date(hour.dt_txt);
     const time = `${
       date.getHours() < 10 ? "0" + date.getHours() : date.getHours()
