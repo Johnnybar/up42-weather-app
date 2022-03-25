@@ -6,16 +6,10 @@ import "./TopViewContainer.scss";
 
 interface TopViewProps {
   selectedHour: HourWeatherProps | null;
-  dayLocationInfo: DayLocationProps | undefined;
-  hoursData: HourWeatherProps[];
+  dayLocationInfo: DayLocationProps | null;
 }
 
-const TopViewContainer = ({
-  selectedHour,
-  dayLocationInfo,
-  hoursData,
-}: TopViewProps) => {
-  selectedHour = selectedHour || hoursData[0];
+const TopViewContainer = ({ selectedHour, dayLocationInfo }: TopViewProps) => {
   return (
     <div className="weather-app__top-view container-fluid">
       <div className="row">
@@ -31,7 +25,7 @@ const TopViewContainer = ({
           )}
         </div>
         <div className="col-md-4">
-          {dayLocationInfo && hoursData && (
+          {dayLocationInfo && (
             <DateLocation dayLocationInfo={dayLocationInfo} />
           )}
         </div>

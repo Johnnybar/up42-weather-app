@@ -28,7 +28,6 @@ describe("TopViewContainer", () => {
       <TopViewContainer
         selectedHour={mockSelectedHour}
         dayLocationInfo={mockDayLocationInfo}
-        hoursData={mockHoursData}
       />,
       container
     );
@@ -42,7 +41,6 @@ describe("TopViewContainer", () => {
         <TopViewContainer
           selectedHour={mockSelectedHour}
           dayLocationInfo={mockDayLocationInfo}
-          hoursData={mockHoursData}
         />
         ,
         <BottomViewScroll
