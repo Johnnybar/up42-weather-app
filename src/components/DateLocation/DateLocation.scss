@@ -1,13 +1,13 @@
 @import "../../scss-utils.scss";
 
-.weather-app__date-location {
-  &-city {
+.#{$namespace}-date-location {
+  &__city {
     @include sm-grey-font;
     word-wrap: break-word;
   }
 
-  &-day,
-  &-date {
+  &__day,
+  &__date {
     font-family: $primary-font-bold;
     color: $weather-app-white;
     font-size: $lg-font;

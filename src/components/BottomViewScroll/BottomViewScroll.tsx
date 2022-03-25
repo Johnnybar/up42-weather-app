@@ -7,8 +7,8 @@ interface BottomViewProps {
 }
 
 const BottomViewScroll = ({ hoursData, selectHour }: BottomViewProps) => (
-  <div className="weather-app__bottom-view scroll">
-    <ul className="weather-app__bottom-view-hour-list">
+  <div className="weather-app-bottom-view scroll">
+    <ul className="weather-app-bottom-view__hour-list">
       {hoursData &&
         hoursData.map((hour, i) => (
           <Hour

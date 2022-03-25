@@ -1,6 +1,6 @@
 @import "../../scss-utils.scss";
 
-.weather-app__fallback {
+.#{$namespace}-fallback {
   font-size: $md-font;
   text-align: center;
   height: 100vh;

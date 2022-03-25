@@ -6,14 +6,14 @@ interface DateLocationProps {
 
 const DateLocation = ({ dayLocationInfo }: DateLocationProps) => {
   return (
-    <div className="weather-app__date-location">
-      <div className="weather-app__date-location-city">
+    <div className="weather-app-date__location">
+      <div className="weather-app-date-location__city">
         {dayLocationInfo.name}
       </div>
-      <div className="weather-app__date-location-day">
+      <div className="weather-app-date-location__day">
         {dayLocationInfo.day}
       </div>
-      <div className="weather-app__date-location-date">
+      <div className="weather-app-date-location__date">
         {dayLocationInfo.exactDate}
       </div>
     </div>

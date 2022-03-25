@@ -6,7 +6,7 @@ interface ErrorProps {
 }
 
 const Error = ({ message }: ErrorProps) => (
-  <div className="weather-app__error">
+  <div className="weather-app-error">
     The following error occurred: <strong>{message}</strong>
   </div>
 );
