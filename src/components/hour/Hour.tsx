@@ -9,6 +9,7 @@ interface HourProps {
   hoursData: HourWeatherProps[];
   selectHour: SelectHour;
 }
+
 const Hour = ({ index, hour, hoursData, selectHour }: HourProps) => {
   return (
     <li
