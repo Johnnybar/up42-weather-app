@@ -24,7 +24,7 @@ The app is separated into typescript components (each with own scss and unit tes
 
 ## **CSS**
 
-In terms of CSS considerations, I used the BEM methodology for clearer semantic structure, which also keeps the Sass structure clean, as well as some bootstrap classes for simpler mobile-ready responsiveness.
+In terms of CSS considerations, I used the BEM methodology for clearer solid structure, which also keeps the Sass structure simple, as well as some bootstrap classes for easier mobile-ready responsiveness.
 
 ## **What could be improved with more time:**
 
