@@ -12,15 +12,15 @@ interface HourProps {
 const Hour = ({ index, hour, hoursData, selectHour }: HourProps) => {
   return (
     <li
-      className={`weather-app__hour-view ${addClassIfSelected(
+      className={`weather-app-hour-view ${addClassIfSelected(
         hour,
-        "weather-app__hour-view--selected"
+        "weather-app-hour-view--selected"
       )}`}
       onClick={() => selectHour(index, hoursData)}
     >
       {/* adds 'selected' class to child for testing purposes */}
       <div
-        className={`weather-app__hour-view-time ${addClassIfSelected(
+        className={`weather-app-hour-view__time ${addClassIfSelected(
           hour,
           "selected"
         )}`}
@@ -29,7 +29,7 @@ const Hour = ({ index, hour, hoursData, selectHour }: HourProps) => {
       </div>
       <WeatherIcon type={hour.weather} />
       <div
-        className="weather-app__hour-view-temp"
+        className="weather-app-hour-view__temp"
         data-testid={`${addClassIfSelected(hour, "selected-hour")}`}
       >
         {hour.temp}

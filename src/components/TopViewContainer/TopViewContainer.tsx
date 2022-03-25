@@ -11,7 +11,7 @@ interface TopViewProps {
 
 const TopViewContainer = ({ selectedHour, dayLocationInfo }: TopViewProps) => {
   return (
-    <div className="weather-app__top-view container-fluid">
+    <div className="weather-app-top-view container-fluid">
       <div className="row">
         <div className="col-md-4 weather-app__weather-icon-container">
           {selectedHour && <WeatherIcon type={selectedHour.weather} />}

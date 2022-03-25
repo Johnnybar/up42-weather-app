@@ -1,19 +1,19 @@
 @import "../../scss-utils.scss";
 
-.weather-app__selected-view {
+.#{$namespace}-selected-view {
   padding-right: toRem(70);
 
-  &-info {
+  &__info {
     display: flex;
     justify-content: space-between;
   }
 
-  &-hiLo-temp,
-  &-weather {
+  &__hiLo-temp,
+  &__weather {
     @include sm-grey-font;
   }
 
-  &-temprature {
+  &__temprature {
     color: $weather-app-white;
     font-size: $xl-font;
     font-family: $primary-font-bold;

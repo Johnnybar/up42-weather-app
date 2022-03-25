@@ -1,6 +1,6 @@
 @import "../../scss-utils.scss";
 
-.weather-app__hour-view {
+.#{$namespace}-hour-view {
   list-style: none;
   min-width: toRem(212);
   min-height: toRem(350);
@@ -9,7 +9,7 @@
   align-items: center;
   padding: toRem(20) 0 toRem(20) 0;
 
-  &-list {
+  &__list {
     margin-bottom: toRem(96);
   }
 
@@ -17,11 +17,11 @@
     background-color: $weather-app-light-grey;
   }
 
-  &-time {
+  &__time {
     @include sm-grey-font;
   }
 
-  &-temp {
+  &__temp {
     font-size: $md-font;
     color: $weather-app-white;
     font-family: $primary-font-bold;

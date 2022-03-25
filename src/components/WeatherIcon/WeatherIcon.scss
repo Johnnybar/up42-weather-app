@@ -1,6 +1,6 @@
 @import "../../scss-utils.scss";
 
-.weather-app__weather-icon {
+.#{$namespace}__weather-icon {
   width: toRem(328);
   height: toRem(328);
 
