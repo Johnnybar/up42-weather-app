@@ -4,24 +4,26 @@ import BottomViewScroll from "./components/BottomViewScroll/BottomViewScroll";
 import Error from "./components/Error/Error";
 import Fallback from "./components/Fallback/Fallback";
 import { executeSlider } from "./features/slider";
-import { getWeatherData, fetchData } from "./utils";
+import { getWeatherData, fetchData, selectFirstHour } from "./utils";
 import apiInfo from "../src/assets/api-info.json";
 import "./App.scss";
 
 function App() {
   const [hoursData, setHoursData] = useState<HourWeatherProps[]>([]);
+  const [dayLocationInfo, setDayLocationInfo] =
+    useState<Optional<DayLocationProps>>(null);
+  const [hourIndex, setHourIndex] = useState<number>(0);
   const [error, setError] = useState<Optional<string>>(null);
-  const [dayLocationInfo, setDayLocationInfo] = useState<DayLocationProps>();
-  const [selectedHour, setSelectedHour] =
-    useState<Optional<HourWeatherProps>>(null);
+  const selectedHour: HourWeatherProps | null = hoursData[hourIndex];
 
   const selectHour = (i: number) => {
     //remove previously selected and select current
-    hoursData.forEach((hour, index) => {
+    let copyArray: HourWeatherProps[] = JSON.parse(JSON.stringify(hoursData));
+    copyArray.forEach((hour, index) => {
       hour.selected = index === i ? true : false;
     });
-    const selectedHour = hoursData[i];
-    setSelectedHour(selectedHour);
+    setHourIndex(i);
+    setHoursData(copyArray);
   };
 
   useEffect(() => {
@@ -29,9 +31,11 @@ function App() {
 
     fetchData(apiInfo)
       .then((data) => {
-        const { dayInfoObj, hoursArr } = getWeatherData(data);
+        let { dayInfoObj, hoursArr } = getWeatherData(data);
         //set to an obj with city name, day and date
         setDayLocationInfo(dayInfoObj);
+        // Mark first hour as selected
+        hoursArr = selectFirstHour(hoursArr);
         //set hours to an array with 24 objects (hours) with 3 props
         setHoursData(hoursArr);
       })
@@ -45,11 +49,9 @@ function App() {
       <TopViewContainer
         dayLocationInfo={dayLocationInfo}
         selectedHour={selectedHour}
-        hoursData={hoursData}
       />
       <BottomViewScroll selectHour={selectHour} hoursData={hoursData} />
       {error && <Error message={error} />}
-
       {(!hoursData.length || !dayLocationInfo) && <Fallback />}
     </div>
   );

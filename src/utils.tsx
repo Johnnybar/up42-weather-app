@@ -109,3 +109,10 @@ export const addClassIfSelected = (
 ) => {
   return hour.selected ? className : "";
 };
+
+export const selectFirstHour = (hoursArray: HourWeatherProps[]) => {
+  if (hoursArray.length) {
+    hoursArray[0].selected = true;
+  }
+  return hoursArray;
+};
