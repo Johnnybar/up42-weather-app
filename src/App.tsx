@@ -4,7 +4,7 @@ import BottomViewScroll from "./components/BottomViewScroll/BottomViewScroll";
 import Error from "./components/Error/Error";
 import Fallback from "./components/Fallback/Fallback";
 import { executeSlider } from "./features/slider";
-import { getWeatherData, fetchData, selectFirstHour } from "./utils";
+import { getWeatherData, fetchData } from "./utils";
 import apiInfo from "../src/assets/api-info.json";
 import "./App.scss";
 
@@ -31,11 +31,9 @@ function App() {
 
     fetchData(apiInfo)
       .then((data) => {
-        let { dayInfoObj, hoursArr } = getWeatherData(data);
+        const { dayInfoObj, hoursArr } = getWeatherData(data);
         //set to an obj with city name, day and date
         setDayLocationInfo(dayInfoObj);
-        // Mark first hour as selected
-        hoursArr = selectFirstHour(hoursArr);
         //set hours to an array with 24 objects (hours) with 3 props
         setHoursData(hoursArr);
       })

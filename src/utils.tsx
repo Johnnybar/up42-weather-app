@@ -94,12 +94,20 @@ export const fetchData = async (obj: APIProps) => {
   }
 };
 
+const selectFirstHour = (hoursArray: HourWeatherProps[]) => {
+  if (hoursArray.length) {
+    hoursArray[0].selected = true;
+  }
+  return hoursArray;
+};
+
 export const getWeatherData = (data: any) => {
   const { name } = data.city;
   const { dt_txt } = data.list[0];
   const singleDayHours = data.list.slice(0, 24);
   const dayInfoObj = getDayInfo(dt_txt, name, singleDayHours);
-  const hoursArr = createSingleDayHours(singleDayHours);
+  let hoursArr = createSingleDayHours(singleDayHours);
+  hoursArr = selectFirstHour(hoursArr);
   return { dayInfoObj, hoursArr };
 };
 
@@ -108,11 +116,4 @@ export const addClassIfSelected = (
   className: string
 ) => {
   return hour.selected ? className : "";
-};
-
-export const selectFirstHour = (hoursArray: HourWeatherProps[]) => {
-  if (hoursArray.length) {
-    hoursArray[0].selected = true;
-  }
-  return hoursArray;
 };
